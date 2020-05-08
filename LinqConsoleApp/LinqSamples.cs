@@ -247,7 +247,7 @@ namespace LinqConsoleApp
         }
 
         /// <summary>
-        /// SELECT Job AS EmployeeJob, COUNT(1) EmployeeNuber FROM Emps GROUP BY Job;
+        /// SELECT Job AS EmployeeJob, COUNT(1) EmployeeNuber FROM Emps GROUP BY Job
         /// </summary>
         public void Task7()
         {
