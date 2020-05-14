@@ -261,7 +261,7 @@ namespace LinqConsoleApp
         /// </summary>
         public void Task8()
         {
-            
+            var res = (from emp in Emps where emp.Job == "Backend programmer" select emp).Any();
         }
 
         /// <summary>
@@ -270,7 +270,7 @@ namespace LinqConsoleApp
         /// </summary>
         public void Task9()
         {
-            
+            var res = Emps.Where(e => e.Job == "Frontend programmer").OrderByDescending(e => e.HireDate).FirstOrDefault();
         }
 
         /// <summary>
@@ -280,20 +280,37 @@ namespace LinqConsoleApp
         /// </summary>
         public void Task10()
         {
-           
+            var res = ((from emp in Emps
+                        select new
+                        {
+                            emp.Ename,
+                            emp.Job,
+                            emp.HireDate
+                        }).Union(from emp in Emps
+                                 where emp.Ename.Contains("No value") && emp.Job == null && emp.HireDate == null
+                                 select new
+                                 {
+                                     emp.Ename,
+                                     emp.Job,
+                                     emp.HireDate
+                                 }));
         }
 
         //Find the employee with the highest salary using the Aggregate () method
         public void Task11()
         {
-            
+            var res = Emps.Aggregate((emp, dept) => emp.Salary > dept.Salary ? emp : dept);
         }
 
         //Using the LINQ language and the SelectMany method, 
         //perform a CROSS JOIN join between collections Emps and Depts
         public void Task12()
         {
-            
+            var res = Emps.SelectMany(emp => Depts, (emp, dept) => new
+            {
+                Employee = emp,
+                Department = dept
+            });
         }
     }
 }
