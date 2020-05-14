@@ -261,7 +261,7 @@ namespace LinqConsoleApp
         /// </summary>
         public void Task8()
         {
-            var res = (from emp in Emps where emp.Job == "Backend programmer" select emp).Any();
+            var res = Emps.Where(e => e.Job == "Backend programmer").Any(); 
         }
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace LinqConsoleApp
         /// </summary>
         public void Task10()
         {
-            var res = ((from emp in Emps
+            var res = (from emp in Emps
                         select new
                         {
                             emp.Ename,
@@ -293,7 +293,7 @@ namespace LinqConsoleApp
                                      emp.Ename,
                                      emp.Job,
                                      emp.HireDate
-                                 }));
+                                 });
         }
 
         //Find the employee with the highest salary using the Aggregate () method
