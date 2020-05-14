@@ -261,7 +261,7 @@ namespace LinqConsoleApp
         /// </summary>
         public void Task8()
         {
-            var res = Emps.Where(e => e.Job == "Backend programmer").Any(); 
+            var res = Emps.Any(e => e.Job == "Backend programmer"); 
         }
 
         /// <summary>
